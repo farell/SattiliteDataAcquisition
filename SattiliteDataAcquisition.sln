@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SattiliteDataAcquisition", "SattiliteDataAcquisition\SattiliteDataAcquisition.csproj", "{117E819B-F2D7-4217-9CC1-F17B13655D04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{117E819B-F2D7-4217-9CC1-F17B13655D04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{117E819B-F2D7-4217-9CC1-F17B13655D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{117E819B-F2D7-4217-9CC1-F17B13655D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{117E819B-F2D7-4217-9CC1-F17B13655D04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6B9FA21B-ED41-4ADD-8BCC-3AC736507ED9}
+	EndGlobalSection
+EndGlobal
