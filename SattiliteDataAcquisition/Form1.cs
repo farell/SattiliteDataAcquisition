@@ -21,36 +21,37 @@ namespace SattiliteDataAcquisition
         private byte[] buffer;
         private Object locker;
 
-        private List<SattiliteCom> sattiliteComList;
+        private List<SattiliteUdp> sattiliteComList;
 
         private List<Config> configList;
 
         public Form1()
         {
             InitializeComponent();
-            this.timer = new System.Timers.Timer(1000 * 60);
-            this.timer.Elapsed += new ElapsedEventHandler(TimerTimeout);
+            //this.timer = new System.Timers.Timer(1000 * 60);
+            //this.timer.Elapsed += new ElapsedEventHandler(TimerTimeout);
             this.buffer = new byte[1024];
             this.locker = new Object();
-            this.buttonOpen.Enabled = true;
-            this.buttonClose.Enabled = false;
             this.path = @"D:\Work";
             this.configList = new List<Config>();
-            this.sattiliteComList = new List<SattiliteCom>();
+            this.sattiliteComList = new List<SattiliteUdp>();
 
             StreamReader sr = new StreamReader("config.csv", Encoding.UTF8);
             String line;
+
+            int interval = (int)numericUpDown1.Value;
 
             char[] chs = { ',' };
             while ((line = sr.ReadLine()) != null)
             {
                 string[] items = line.Split(chs);
-                Config config = new Config(items[0], items[1], items[2], items[3]);
-                SattiliteCom sc = new SattiliteCom(config.path,config.port,this);
+                Config config = new Config(items[0], items[1], items[2], items[5]);
+                SattiliteUdp sc = new SattiliteUdp(items[0], config.path,Int32.Parse(config.port),this, interval);
                 this.configList.Add(config);
                 this.sattiliteComList.Add(sc);
 
-                ListViewItem listItem = new ListViewItem(items);
+                string[] viewItem = { items[0], items[1], items[2], items[5] };
+                ListViewItem listItem = new ListViewItem(viewItem);
                 this.listView1.Items.Add(listItem);
             }
             sr.Close();
@@ -95,28 +96,9 @@ namespace SattiliteDataAcquisition
 
         private void buttonOpen_Click(object sender, EventArgs e)
         {
-            if(comPort == null)
-            {
-                string portName = this.textBoxPortName.Text;
-                comPort = new SerialPort(portName, 38400, Parity.None, 8, StopBits.One);
-                comPort.DataReceived += new SerialDataReceivedEventHandler(ComDataReceive);
-            }
-            
-            comPort.Open();
+            MessageBox.Show(DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss"));
+            return;
 
-           string fileName = DateTime.Now.ToString()+".rtcm";
-
-           fileName = fileName.Replace('/', '-');
-           fileName = fileName.Replace(':', '-');
-
-            string pathString = Path.Combine(this.path, fileName); 
-
-            this.fileStream = new FileStream(pathString,FileMode.Create);
-
-            this.timer.Start();
-
-            this.buttonOpen.Enabled = false;
-            this.buttonClose.Enabled = true;
         }
 
         private void ComDataReceive(object sender, SerialDataReceivedEventArgs e)
@@ -144,18 +126,18 @@ namespace SattiliteDataAcquisition
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            if(comPort != null)
-            {
-                comPort.Close();
-            }
+            //if(comPort != null)
+            //{
+            //    comPort.Close();
+            //}
 
-            timer.Stop();
+            //timer.Stop();
 
-            this.fileStream.Flush();
-            this.fileStream.Close();
+            //this.fileStream.Flush();
+            //this.fileStream.Close();
 
-            this.buttonOpen.Enabled = true;
-            this.buttonClose.Enabled = false;
+            //this.buttonOpen.Enabled = true;
+            //this.buttonClose.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -166,10 +148,9 @@ namespace SattiliteDataAcquisition
 
         private void buttonStartBatch_Click(object sender, EventArgs e)
         {
-            this.groupBox3.Enabled = false;
             this.buttonStartBatch.Enabled = false;
             this.buttonStopBatch.Enabled = true;
-            foreach(SattiliteCom sc in this.sattiliteComList)
+            foreach(SattiliteUdp sc in this.sattiliteComList)
             {
                 sc.Start();
             }
@@ -204,10 +185,9 @@ namespace SattiliteDataAcquisition
 
         private void buttonStopBatch_Click(object sender, EventArgs e)
         {
-            this.groupBox3.Enabled = true;
             this.buttonStartBatch.Enabled = true;
             this.buttonStopBatch.Enabled = false;
-            foreach (SattiliteCom sc in this.sattiliteComList)
+            foreach (SattiliteUdp sc in this.sattiliteComList)
             {
                 sc.Stop();
             }

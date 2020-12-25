@@ -30,10 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxPortName = new System.Windows.Forms.TextBox();
-            this.buttonOpen = new System.Windows.Forms.Button();
-            this.buttonClose = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.buttonStartBatch = new System.Windows.Forms.Button();
@@ -44,54 +40,20 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonStopBatch = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.RestoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "串口号:";
-            // 
-            // textBoxPortName
-            // 
-            this.textBoxPortName.Location = new System.Drawing.Point(55, 25);
-            this.textBoxPortName.Name = "textBoxPortName";
-            this.textBoxPortName.Size = new System.Drawing.Size(58, 21);
-            this.textBoxPortName.TabIndex = 1;
-            // 
-            // buttonOpen
-            // 
-            this.buttonOpen.Location = new System.Drawing.Point(136, 23);
-            this.buttonOpen.Name = "buttonOpen";
-            this.buttonOpen.Size = new System.Drawing.Size(54, 23);
-            this.buttonOpen.TabIndex = 2;
-            this.buttonOpen.Text = "打开";
-            this.buttonOpen.UseVisualStyleBackColor = true;
-            this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
-            // 
-            // buttonClose
-            // 
-            this.buttonClose.Location = new System.Drawing.Point(205, 23);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(53, 23);
-            this.buttonClose.TabIndex = 3;
-            this.buttonClose.Text = "关闭";
-            this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // groupBox1
             // 
@@ -108,12 +70,13 @@
             this.textBox2.Location = new System.Drawing.Point(6, 20);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
+            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox2.Size = new System.Drawing.Size(530, 130);
             this.textBox2.TabIndex = 0;
             // 
             // buttonStartBatch
             // 
-            this.buttonStartBatch.Location = new System.Drawing.Point(27, 25);
+            this.buttonStartBatch.Location = new System.Drawing.Point(311, 25);
             this.buttonStartBatch.Name = "buttonStartBatch";
             this.buttonStartBatch.Size = new System.Drawing.Size(86, 23);
             this.buttonStartBatch.TabIndex = 5;
@@ -168,7 +131,7 @@
             // buttonStopBatch
             // 
             this.buttonStopBatch.Enabled = false;
-            this.buttonStopBatch.Location = new System.Drawing.Point(139, 24);
+            this.buttonStopBatch.Location = new System.Drawing.Point(425, 25);
             this.buttonStopBatch.Name = "buttonStopBatch";
             this.buttonStopBatch.Size = new System.Drawing.Size(93, 23);
             this.buttonStopBatch.TabIndex = 9;
@@ -176,29 +139,54 @@
             this.buttonStopBatch.UseVisualStyleBackColor = true;
             this.buttonStopBatch.Click += new System.EventHandler(this.buttonStopBatch_Click);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.buttonClose);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.textBoxPortName);
-            this.groupBox3.Controls.Add(this.buttonOpen);
-            this.groupBox3.Location = new System.Drawing.Point(15, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(268, 66);
-            this.groupBox3.TabIndex = 10;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "测试";
-            // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.numericUpDown1);
+            this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.buttonStopBatch);
             this.groupBox4.Controls.Add(this.buttonStartBatch);
-            this.groupBox4.Location = new System.Drawing.Point(301, 12);
+            this.groupBox4.Location = new System.Drawing.Point(17, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(250, 66);
+            this.groupBox4.Size = new System.Drawing.Size(546, 66);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "控制";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(228, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "分钟";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(102, 25);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            65536,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown1.TabIndex = 11;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 12);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "数据保存周期：";
             // 
             // notifyIcon1
             // 
@@ -236,7 +224,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(571, 491);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -247,20 +234,15 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxPortName;
-        private System.Windows.Forms.Button buttonOpen;
-        private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button buttonStartBatch;
@@ -271,12 +253,14 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button buttonStopBatch;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem RestoreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
 
